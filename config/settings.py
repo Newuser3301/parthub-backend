@@ -166,6 +166,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": (
         "rest_framework.permissions.IsAuthenticated",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 
@@ -198,3 +199,9 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = env_bool("SECURE_SSL_REDIRECT", default=False)  # xohlasang true qilasan
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Parthub API",
+    "DESCRIPTION": "Parthub backend API documentation",
+    "VERSION": "1.0.0",
+}
