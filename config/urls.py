@@ -1,6 +1,7 @@
 ﻿from django.contrib import admin
 from django.http import JsonResponse
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 def healthz(_request):
     return JsonResponse({"ok": True})
@@ -14,4 +15,7 @@ urlpatterns = [
     path("api/", include("b2b.urls")),
     path("api/", include("chat.urls")),
     path("api/", include("notifications.urls")),
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("api/docs/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+
 ]
